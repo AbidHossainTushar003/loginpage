@@ -15,10 +15,7 @@
             android:name=".LinkedIn"
             android:exported="false" />
         <activity
-            android:name=".InstraLogin"
-            android:exported="false" />
-        <activity
-            android:name=".EdittextBackground"
+            android:name=".InstaLogin"
             android:exported="false" />
         <activity
             android:name=".XLogin"

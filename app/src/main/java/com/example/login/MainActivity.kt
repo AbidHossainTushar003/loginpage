@@ -3,7 +3,6 @@ package com.example.login
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
-
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -25,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         findViewById<Button>(R.id.btnInstagram).setOnClickListener {
-            startActivity(Intent(this, InstraLogin::class.java))
+            startActivity(Intent(this, InstaLogin::class.java))
         }
 
         findViewById<Button>(R.id.btnTwitter).setOnClickListener {
