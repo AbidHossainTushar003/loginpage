@@ -1,255 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0C0C0E"
-    android:padding="12dp"
-    tools:context=".LayoutPageTwo">
+    android:background="#F5F5F7">
 
-    <!-- ================================================================= -->
-    <!-- ARCHITECTURAL GUIDELINES & BARRIERS                               -->
-    <!-- ================================================================= -->
-
-    <!-- 45% / 55% Core Split for the Media/Grid System -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/coreSplitGuide"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.45" />
+        android:background="#F85606"
+        app:elevation="4dp">
 
-    <!-- 40% Metric Guide for the top-tier information block -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/metricLeftGuide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.40" />
-
-    <!-- ================================================================= -->
-    <!-- PROGRAM 2 ELEMENT: 16:9 LIVE MEDIA PREVIEW & FLOATING AVATAR      -->
-    <!-- ================================================================= -->
-
-    <ImageView
-        android:id="@+id/liveVideoPlayer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        android:src="@android:color/darker_gray"
-        android:background="#1A1A1A"
-        app:layout_constraintDimensionRatio="H,16:9"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/coreSplitGuide"
-        tools:ignore="ContentDescription" />
-
-    <!-- Overlapping Profile Avatar Badge (Perfect 50/50 alignment on video bottom edge) -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/avatarBadge"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        app:cardCornerRadius="24dp"
-        app:cardBackgroundColor="#6200EE"
-        app:strokeWidth="2dp"
-        app:strokeColor="#0C0C0E"
-        app:layout_constraintStart_toStartOf="@id/liveVideoPlayer"
-        app:layout_constraintTop_toBottomOf="@id/liveVideoPlayer"
-        app:layout_constraintBottom_toBottomOf="@id/liveVideoPlayer" />
-
-    <!-- ================================================================= -->
-    <!-- PROGRAM 2 ELEMENT: DYNAMIC METRIC CARDS (40% | 30% | 30% Split)    -->
-    <!-- ================================================================= -->
-
-    <!-- Metric Card 1 (0% to 40% Width) -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/topMetricCard1"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="4dp"
-        app:cardBackgroundColor="#1F1F23"
-        app:layout_constraintTop_toTopOf="@id/liveVideoPlayer"
-        app:layout_constraintStart_toEndOf="@id/coreSplitGuide"
-        app:layout_constraintEnd_toStartOf="@id/metricLeftGuide" />
-
-    <!-- Metric Card 2 (First half of remaining width) -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/topMetricCard2"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginHorizontal="4dp"
-        app:cardBackgroundColor="#1F1F23"
-        app:layout_constraintTop_toTopOf="@id/topMetricCard1"
-        app:layout_constraintStart_toEndOf="@id/metricLeftGuide"
-        app:layout_constraintEnd_toStartOf="@id/topMetricCard3" />
-
-    <!-- Metric Card 3 (Second half of remaining width) -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/topMetricCard3"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="4dp"
-        app:cardBackgroundColor="#1F1F23"
-        app:layout_constraintTop_toTopOf="@id/topMetricCard1"
-        app:layout_constraintStart_toEndOf="@id/topMetricCard2"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- ================================================================= -->
-    <!-- PROGRAM 3 ELEMENT: VIRTUAL FLOW METADATA PANEL (Right Column)     -->
-    <!-- ================================================================= -->
-
-    <!-- This Flow Helper coordinates elements 1 through 4 directly on the root canvas -->
-    <androidx.constraintlayout.helper.widget.Flow
-        android:id="@+id/metaInspectorGrid"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="12dp"
-        android:padding="8dp"
-        android:background="#111115"
-        app:flow_wrapMode="aligned"
-        app:flow_maxElementsPerLine="2"
-        app:flow_horizontalStyle="spread"
-        app:flow_horizontalGap="8dp"
-        app:flow_verticalGap="8dp"
-        app:referenced_ids="metaItem1,metaItem2,metaItem3,metaItem4"
-        app:layout_constraintStart_toEndOf="@id/coreSplitGuide"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/topMetricCard1"
-        app:layout_constraintBottom_toBottomOf="@id/liveVideoPlayer" />
-
-    <!-- Virtual Grid Children Views -->
-    <View android:id="@+id/metaItem1" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
-    <View android:id="@+id/metaItem2" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
-    <View android:id="@+id/metaItem3" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
-    <View android:id="@+id/metaItem4" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
-
-    <!-- ================================================================= -->
-    <!-- PROGRAM 1 ELEMENT: THE IMAGE WIREFRAME DUAL LOWER COLUMNS         -->
-    <!-- ================================================================= -->
-
-    <!-- Bottom Outer Layout Box Container (Capturing original wireframe bounding box) -->
-    <View
-        android:id="@+id/wireframeBottomContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="32dp"
-        android:background="#16161E"
-        app:layout_constraintTop_toBottomOf="@id/liveVideoPlayer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <!-- WIREFRAME LEFT COLUMN: Aspect-Locked Controls (35% of the bottom viewport container) -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/bottomInternalSplitGuide"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.35" />
-
-    <Button
-        android:id="@+id/squareAction1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="12dp"
-        android:text="1"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toTopOf="@id/wireframeBottomContainer"
-        app:layout_constraintStart_toStartOf="@id/wireframeBottomContainer"
-        app:layout_constraintEnd_toEndOf="@id/bottomInternalSplitGuide"
-        app:layout_constraintBottom_toTopOf="@id/squareAction2"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <Button
-        android:id="@+id/squareAction2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="12dp"
-        android:text="2"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintTop_toBottomOf="@id/squareAction1"
-        app:layout_constraintStart_toStartOf="@id/wireframeBottomContainer"
-        app:layout_constraintEnd_toEndOf="@id/bottomInternalSplitGuide"
-        app:layout_constraintBottom_toBottomOf="@id/wireframeBottomContainer" />
-
-    <!-- WIREFRAME RIGHT COLUMN: Elastic Waveform Panel/Content Feed Box -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/elasticWaveformPanel"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="12dp"
-        app:cardBackgroundColor="#22222B"
-        app:layout_constraintStart_toEndOf="@id/bottomInternalSplitGuide"
-        app:layout_constraintEnd_toEndOf="@id/wireframeBottomContainer"
-        app:layout_constraintTop_toTopOf="@id/wireframeBottomContainer"
-        app:layout_constraintBottom_toBottomOf="@id/wireframeBottomContainer">
-
-        <!-- Program 3 Overflow Protection Barrier System inside the Panel -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="12dp">
+            android:layout_height="64dp"
+            android:paddingHorizontal="12dp">
 
-            <TextView
-                android:id="@+id/lblSystemStatus"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/searchCardWrapper"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnCartContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="12dp">
+
+                    <ImageView
+                        android:id="@+id/icSearch"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@android:drawable/ic_search_category_default"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Search in Wonderful Collection..."
+                        android:textColor="#757575"
+                        android:textSize="14sp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/icSearch"
+                        app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <FrameLayout
+                android:id="@+id/btnCartContainer"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/cart"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="2dp"
+                    android:background="#F85606"
+                    android:text="3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="24dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/heroPromoCarousel"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:cardCornerRadius="0dp"
+                app:strokeWidth="0dp"
+                app:layout_constraintDimensionRatio="16:7"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logocover"
+                    tools:ignore="ContentDescription" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- FIXED: Changed layout_width to 0dp, removed layout_mx, added explicit margins -->
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/quickActionChannelFlow"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="System Track Feed:"
-                android:textColor="#E4E4E7"
-                android:textStyle="bold"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:padding="12dp"
+                android:background="@android:color/white"
+                app:flow_wrapMode="chain"
+                app:flow_maxElementsPerLine="4"
+                app:flow_horizontalGap="8dp"
+                app:flow_verticalGap="12dp"
+                app:referenced_ids="actionItem1,actionItem2,actionItem3,actionItem4"
+                app:layout_constraintTop_toBottomOf="@id/heroPromoCarousel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- FIXED: Provided layout_width="0dp" and basic constraint anchors to allow Flow processing -->
+            <View android:id="@+id/actionItem1"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:background="#FFE0B2"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/lblEngineStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Virtualization Core State:"
-                android:textColor="#E4E4E7"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/lblSystemStatus"
+            <View android:id="@+id/actionItem2"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:background="#C8E6C9"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <!-- The Dynamic Barrier tracks variable language text lengths dynamically -->
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/internalContentBarrier"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="end"
-                app:referenced_ids="lblSystemStatus,lblEngineStatus" />
-
-            <!-- Status Indicator values safely bounded to the right of our Barrier plane -->
-            <TextView
-                android:id="@+id/txtSystemValue"
+            <View android:id="@+id/actionItem3"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="ACTIVE_STREAM_PCM"
-                android:textColor="#10B981"
-                app:layout_constraintBottom_toBottomOf="@id/lblSystemStatus"
-                app:layout_constraintStart_toEndOf="@id/internalContentBarrier"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/lblSystemStatus" />
+                android:layout_height="64dp"
+                android:background="#B3E5FC"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/txtEngineValue"
+            <View android:id="@+id/actionItem4"
                 android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:background="#F8BBD0"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/flashSaleBaseContainer"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:text="99.98% SYNCED"
-                android:textColor="#10B981"
-                app:layout_constraintBottom_toBottomOf="@id/lblEngineStatus"
-                app:layout_constraintStart_toEndOf="@id/internalContentBarrier"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/lblEngineStatus" />
+                android:layout_marginTop="12dp"
+                android:layout_marginHorizontal="12dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:strokeWidth="0dp"
+                app:layout_constraintTop_toBottomOf="@id/quickActionChannelFlow">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:id="@+id/txtFlashSaleHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Flash Sale"
+                        android:textColor="#F85606"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/flashProductSplitAxis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent="0.50" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/flashProductCard1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginEnd="6dp"
+                        app:layout_constraintTop_toBottomOf="@id/txtFlashSaleHeading"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/flashProductSplitAxis">
+
+                        <ImageView
+                            android:id="@+id/imgProduct1"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:src="@drawable/wc"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/txtPriceProduct1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Item Price: ৳1,234"
+                            android:textColor="#F85606"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/imgProduct1"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/flashProductCard2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        app:layout_constraintTop_toTopOf="@id/flashProductCard1"
+                        app:layout_constraintStart_toEndOf="@id/flashProductSplitAxis"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/imgProduct2"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:src="@drawable/wc"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:id="@+id/txtPriceProduct2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:text="Item Price: ৳1,234"
+                            android:textColor="#F85606"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:layout_constraintTop_toBottomOf="@id/imgProduct2"
+                            app:layout_constraintStart_toStartOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.core.widget.NestedScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
