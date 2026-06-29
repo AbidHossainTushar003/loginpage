@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C0C0E"
+    android:padding="12dp"
+    tools:context=".LayoutPageTwo">
+
+    <!-- ================================================================= -->
+    <!-- ARCHITECTURAL GUIDELINES & BARRIERS                               -->
+    <!-- ================================================================= -->
+
+    <!-- 45% / 55% Core Split for the Media/Grid System -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/coreSplitGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <!-- 40% Metric Guide for the top-tier information block -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/metricLeftGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.40" />
+
+    <!-- ================================================================= -->
+    <!-- PROGRAM 2 ELEMENT: 16:9 LIVE MEDIA PREVIEW & FLOATING AVATAR      -->
+    <!-- ================================================================= -->
+
+    <ImageView
+        android:id="@+id/liveVideoPlayer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@android:color/darker_gray"
+        android:background="#1A1A1A"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/coreSplitGuide"
+        tools:ignore="ContentDescription" />
+
+    <!-- Overlapping Profile Avatar Badge (Perfect 50/50 alignment on video bottom edge) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/avatarBadge"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardBackgroundColor="#6200EE"
+        app:strokeWidth="2dp"
+        app:strokeColor="#0C0C0E"
+        app:layout_constraintStart_toStartOf="@id/liveVideoPlayer"
+        app:layout_constraintTop_toBottomOf="@id/liveVideoPlayer"
+        app:layout_constraintBottom_toBottomOf="@id/liveVideoPlayer" />
+
+    <!-- ================================================================= -->
+    <!-- PROGRAM 2 ELEMENT: DYNAMIC METRIC CARDS (40% | 30% | 30% Split)    -->
+    <!-- ================================================================= -->
+
+    <!-- Metric Card 1 (0% to 40% Width) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/topMetricCard1"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="4dp"
+        app:cardBackgroundColor="#1F1F23"
+        app:layout_constraintTop_toTopOf="@id/liveVideoPlayer"
+        app:layout_constraintStart_toEndOf="@id/coreSplitGuide"
+        app:layout_constraintEnd_toStartOf="@id/metricLeftGuide" />
+
+    <!-- Metric Card 2 (First half of remaining width) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/topMetricCard2"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginHorizontal="4dp"
+        app:cardBackgroundColor="#1F1F23"
+        app:layout_constraintTop_toTopOf="@id/topMetricCard1"
+        app:layout_constraintStart_toEndOf="@id/metricLeftGuide"
+        app:layout_constraintEnd_toStartOf="@id/topMetricCard3" />
+
+    <!-- Metric Card 3 (Second half of remaining width) -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/topMetricCard3"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="4dp"
+        app:cardBackgroundColor="#1F1F23"
+        app:layout_constraintTop_toTopOf="@id/topMetricCard1"
+        app:layout_constraintStart_toEndOf="@id/topMetricCard2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ================================================================= -->
+    <!-- PROGRAM 3 ELEMENT: VIRTUAL FLOW METADATA PANEL (Right Column)     -->
+    <!-- ================================================================= -->
+
+    <!-- This Flow Helper coordinates elements 1 through 4 directly on the root canvas -->
+    <androidx.constraintlayout.helper.widget.Flow
+        android:id="@+id/metaInspectorGrid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        android:padding="8dp"
+        android:background="#111115"
+        app:flow_wrapMode="aligned"
+        app:flow_maxElementsPerLine="2"
+        app:flow_horizontalStyle="spread"
+        app:flow_horizontalGap="8dp"
+        app:flow_verticalGap="8dp"
+        app:referenced_ids="metaItem1,metaItem2,metaItem3,metaItem4"
+        app:layout_constraintStart_toEndOf="@id/coreSplitGuide"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topMetricCard1"
+        app:layout_constraintBottom_toBottomOf="@id/liveVideoPlayer" />
+
+    <!-- Virtual Grid Children Views -->
+    <View android:id="@+id/metaItem1" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
+    <View android:id="@+id/metaItem2" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
+    <View android:id="@+id/metaItem3" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
+    <View android:id="@+id/metaItem4" android:layout_width="0dp" android:layout_height="40dp" android:background="#27272A"/>
+
+    <!-- ================================================================= -->
+    <!-- PROGRAM 1 ELEMENT: THE IMAGE WIREFRAME DUAL LOWER COLUMNS         -->
+    <!-- ================================================================= -->
+
+    <!-- Bottom Outer Layout Box Container (Capturing original wireframe bounding box) -->
+    <View
+        android:id="@+id/wireframeBottomContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:background="#16161E"
+        app:layout_constraintTop_toBottomOf="@id/liveVideoPlayer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- WIREFRAME LEFT COLUMN: Aspect-Locked Controls (35% of the bottom viewport container) -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/bottomInternalSplitGuide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.35" />
+
+    <Button
+        android:id="@+id/squareAction1"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:text="1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="@id/wireframeBottomContainer"
+        app:layout_constraintStart_toStartOf="@id/wireframeBottomContainer"
+        app:layout_constraintEnd_toEndOf="@id/bottomInternalSplitGuide"
+        app:layout_constraintBottom_toTopOf="@id/squareAction2"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <Button
+        android:id="@+id/squareAction2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        android:text="2"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toBottomOf="@id/squareAction1"
+        app:layout_constraintStart_toStartOf="@id/wireframeBottomContainer"
+        app:layout_constraintEnd_toEndOf="@id/bottomInternalSplitGuide"
+        app:layout_constraintBottom_toBottomOf="@id/wireframeBottomContainer" />
+
+    <!-- WIREFRAME RIGHT COLUMN: Elastic Waveform Panel/Content Feed Box -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/elasticWaveformPanel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="12dp"
+        app:cardBackgroundColor="#22222B"
+        app:layout_constraintStart_toEndOf="@id/bottomInternalSplitGuide"
+        app:layout_constraintEnd_toEndOf="@id/wireframeBottomContainer"
+        app:layout_constraintTop_toTopOf="@id/wireframeBottomContainer"
+        app:layout_constraintBottom_toBottomOf="@id/wireframeBottomContainer">
+
+        <!-- Program 3 Overflow Protection Barrier System inside the Panel -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="12dp">
+
+            <TextView
+                android:id="@+id/lblSystemStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="System Track Feed:"
+                android:textColor="#E4E4E7"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/lblEngineStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Virtualization Core State:"
+                android:textColor="#E4E4E7"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/lblSystemStatus"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- The Dynamic Barrier tracks variable language text lengths dynamically -->
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/internalContentBarrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="end"
+                app:referenced_ids="lblSystemStatus,lblEngineStatus" />
+
+            <!-- Status Indicator values safely bounded to the right of our Barrier plane -->
+            <TextView
+                android:id="@+id/txtSystemValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="ACTIVE_STREAM_PCM"
+                android:textColor="#10B981"
+                app:layout_constraintBottom_toBottomOf="@id/lblSystemStatus"
+                app:layout_constraintStart_toEndOf="@id/internalContentBarrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lblSystemStatus" />
+
+            <TextView
+                android:id="@+id/txtEngineValue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="99.98% SYNCED"
+                android:textColor="#10B981"
+                app:layout_constraintBottom_toBottomOf="@id/lblEngineStatus"
+                app:layout_constraintStart_toEndOf="@id/internalContentBarrier"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/lblEngineStatus" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
