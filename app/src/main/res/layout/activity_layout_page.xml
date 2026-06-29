@@ -9,7 +9,6 @@
     tools:context=".LayoutPage"
     android:background="@color/black">
 
-        <!-- Top Section: 3 Circular Items in a Row -->
         <LinearLayout
             android:id="@+id/topRowContainer"
             android:layout_width="0dp"
@@ -42,7 +41,6 @@
                 android:background="@color/black"/>
         </LinearLayout>
 
-        <!-- Middle Section: Large Rectangular Banner/Box -->
         <View
             android:id="@+id/middleBanner"
             android:layout_width="0dp"
@@ -53,7 +51,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/white"/>
 
-        <!-- Bottom Container: Holds both left and right columns -->
         <LinearLayout
             android:id="@+id/bottomSectionContainer"
             android:layout_width="0dp"
@@ -67,7 +64,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:background="@color/white">
 
-            <!-- LEFT COLUMN: Nested ConstraintLayout (Inner Red Container) -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/leftConstraintLayout"
                 android:layout_width="0dp"
@@ -77,7 +73,6 @@
                 android:padding="8dp"
                 android:background="@color/black">
 
-                <!-- 5 Vertical Square Items distributed evenly -->
                 <View android:id="@+id/sq1"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -111,17 +106,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- RIGHT COLUMN: LinearLayout (Green Container mentioned) -->
             <LinearLayout
                 android:id="@+id/rightLinearLayout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:background="@color/black">
 
-                <!-- 5 Wide Rectangular Items distributed evenly using weight -->
                 <View android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -136,18 +129,31 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:layout_marginBottom="8dp"
-                    android:background="@color/white"/>
-                <View android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/white"/>
-                <View android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
                     android:background="@color/white"/>
 
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/TWOLinearLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@color/black">
+
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"/>
+                <View android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/white"/>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
   </androidx.constraintlayout.widget.ConstraintLayout>

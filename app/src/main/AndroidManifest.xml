@@ -12,20 +12,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Login">
         <activity
-            android:name=".scene_ultimate_workspace"
-            android:exported="false" />
+            android:name=".DualLogin"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".LayoutPageTwo"
-            android:exported="false" />
-        <activity
-            android:name=".LayoutPage"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".LayoutPage"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".PracticeConstant"
+            android:exported="false" />
         <activity
             android:name=".LinkedIn"
             android:exported="false" />
@@ -41,11 +48,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
