@@ -86,7 +86,8 @@
             android:layout_margin="20dp"
             android:background="@color/black"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            >
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/TotalAmount"
@@ -103,8 +104,7 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/Amount"
@@ -117,7 +117,7 @@
                     android:textSize="15sp"
                     android:textStyle="italic"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/CardTitel"/>
+                    app:layout_constraintTop_toBottomOf="@+id/CardTitel" />
 
                 <Button
                     android:id="@+id/i"
@@ -128,8 +128,8 @@
                     android:textAlignment="center"
                     android:textSize="15sp"
                     android:textStyle="italic"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

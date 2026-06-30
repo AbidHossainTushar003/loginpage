@@ -64,7 +64,7 @@
 
 
         <Button
-            android:id="@+id/signIn"
+            android:id="@+id/btnsignIn"
             android:layout_width="match_parent"
             android:layout_height="52dp"
             android:layout_marginTop="24dp"
