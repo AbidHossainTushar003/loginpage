@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Login">
         <activity
+            android:name=".DataSave"
+            android:exported="false" />
+        <activity
+            android:name=".InstaLogin"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
@@ -22,27 +28,18 @@
         </activity>
         <activity
             android:name=".DualLogin"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".LayoutPageTwo"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".LayoutPage"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".PracticeConstant"
             android:exported="false" />
         <activity
             android:name=".LinkedIn"
-            android:exported="false" />
-        <activity
-            android:name=".InstaLogin"
             android:exported="false" />
         <activity
             android:name=".XLogin"
@@ -52,9 +49,7 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
